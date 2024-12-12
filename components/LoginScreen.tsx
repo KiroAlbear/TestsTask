@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Alert } from 'react-native';
 import CustomButton from './CustomButton';
 import StyledInputField from './StyledInputField';
 import { loginApi } from '@/app/services/api';
+import CustomGradientButton from './CustomGradientButton';
 // import InputField from '../components/InputField';
 // import Button from '../components/Button';
 // import { loginApi } from '../services/api';
@@ -48,7 +49,7 @@ const LoginScreen = () => {
         value={password}
         onChangeText={setPassword}
       />
-      <CustomButton title="Login" onPress={handleLogin} />
+      <CustomGradientButton title="Login" onPress={handleLogin} />
     </View>
   );
 };
