@@ -1,26 +1,34 @@
 import axios from 'axios';
+import { TestsResponseModel } from '../models/TestsResponseModel';
 
-const apiUrl = 'https://app.rel2.stgrapidusertests.com/api/tester/login';  // Replace with your API URL
 
-interface LoginResponse {
-  token_type?: string;
-  expires_in?: number;
-  access_token?: string;
-  refresh_token?: string;
-  // You can add other fields based on your API response
-}
+const baseUrl = "https://app.rel2.stgrapidusertests.com/api/tester";
+const loginUrl = baseUrl + '/login';  // Replace with your API URL
+const testsUrl = baseUrl + '/tests';  // Replace with your API URL
+
+
 
 export const loginApi = async (username: string, password: string): Promise<LoginResponse> => {
   try {
-    const response = await axios.post(apiUrl, {
+    const response = await axios.post(loginUrl, {
       "email": username,
       "password": password,
     });
-    // convert response data to login response
-    console.log(response.data);
     return response.data as LoginResponse;
   } catch (error) {
-    // console.error('Login failed', error);
     throw new Error('Login failed');
+  }
+};
+
+export const testsnApi = async (bearerToken: string,): Promise<TestsResponseModel> => {
+  try {
+    const response = await axios.get(testsUrl, {
+      headers: {
+        Authorization: `Bearer ${bearerToken}`, // Bearer Authorization header
+      },
+    });
+    return response.data as TestsResponseModel;
+  } catch (error) {
+    throw error;
   }
 };
