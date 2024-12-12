@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from './Arguments/ScreenArguments';
-import { ScrollView } from 'react-native-gesture-handler';
+// import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-virtualized-view'
 
 type TestsScreenRouteProp = RouteProp<RootStackParamList, 'TestsScreen'>;
 
